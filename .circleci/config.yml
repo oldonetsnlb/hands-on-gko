@@ -79,4 +79,4 @@ workflows:
           name: Deploying resources on the cluster
           context: cicd-orchestrator
           requires:
-            - Login to K8S 
+            - Attaching to the kubernetes cluster
