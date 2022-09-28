@@ -21,6 +21,9 @@ spec:
   name: "K8s Basic Example"
   version: "1.0"
   description: "Basic api managed by Gravitee Kubernetes Operator"
+  contextRef:
+    name: "apim-blue"
+    namespace: "hands-on-gko"
   proxy:
     virtual_hosts:
       - path: "/k8s-basic"
