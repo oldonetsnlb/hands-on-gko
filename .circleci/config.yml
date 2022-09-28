@@ -65,7 +65,6 @@ jobs:
             kubectl apply -f ./resources/contexts --recursive -n gko-hands-on
             kubectl apply -f ./resources/apis --recursive -n gko-hands-on
 
-
 workflows:
   pull_requests:
     when:
