@@ -18,9 +18,9 @@ kind: ApiDefinition
 metadata:
   name: basic-api-example
 spec:
-  name: "K8s Basic Example"
+  name: "GKO Example"
   version: "1.0"
-  description: "Basic api managed by Gravitee Kubernetes Operator"
+  description: "Managed by Gravitee Kubernetes Operator"
   contextRef:
     name: "apim-blue"
     namespace: "hands-on-gko"
