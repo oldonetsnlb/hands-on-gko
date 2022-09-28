@@ -1,7 +1,7 @@
 apiVersion: gravitee.io/v1alpha1
 kind: ManagementContext
 metadata:
-  name: apim-blue-context
+  name: apim-blue
 spec:
   auth:
     credentials:
