@@ -26,7 +26,7 @@ spec:
     namespace: "gko-hands-on"
   proxy:
     virtual_hosts:
-      - path: "/k8s-basic"
+      - path: "/k8s-example"
     groups:
       - endpoints:
           - name: "Default"
