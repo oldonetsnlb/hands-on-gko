@@ -1,0 +1,83 @@
+version: 2.1
+
+orbs: 
+  kubernetes: circleci/kubernetes@1.3.1
+  keeper: gravitee-io/keeper@0.6.2
+
+executors:
+  azure-cli:
+    parameters:
+      resource_class:
+        description: The resource class
+        type: enum
+        enum: ["small", "medium", "large", "xlarge"]
+        default: "medium"
+    docker:
+      # Version can be found here https://docs.microsoft.com/en-us/cli/azure/release-notes-azure-cli
+      # be careful when updating the version as it looks it is not following semver
+      - image: mcr.microsoft.com/azure-cli:2.40.0
+    resource_class: <<parameters.resource_class>>
+
+jobs:
+  login-to-azure:
+    executor:
+      name: azure-cli
+      resource_class: small
+    parameters:
+      clusterName:
+        type: enum
+        enum: ["apim-preprod"]
+        description: Name of the Azure k8s cluster
+    steps:
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/field/login
+          var-name: AZURE_SP
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/custom_field/tenant
+          var-name: AZURE_TENANT
+      - keeper/env-export:
+          secret-url: keeper://UryantA7MvZe8fkWwcUt8g/field/password
+          var-name: AZURE_SP_PASSWORD
+      - when:
+          condition:
+            equal: [ apim-preprod, << parameters.clusterName >> ]
+          steps: 
+            - run:
+                name: Get ~/.kube/config from Azure
+                command: |
+                  az login --service-principal -u $AZURE_SP --tenant $AZURE_TENANT -p $AZURE_SP_PASSWORD
+                  az aks get-credentials --admin --resource-group Apim-Preprod-Hosted --name gravitee-apim-preprod-aks-cluster
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - .kube/config
+  apply-resources:
+    docker:
+      - image: 'cimg/base:stable'
+    steps:
+      - checkout
+      - kubernetes/install-kubectl
+      - attach_workspace:
+          at: '~/'
+      - run:
+          name: "Apply Resources"
+          command: |
+            kubectl apply -f ./resources --recursive -n gko-hands-on
+
+
+workflows:
+  pull_requests:
+    when:
+      or:
+       - equal: [master, << pipeline.git.branch >>]
+       - equal: [ci-hands-on, << pipeline.git.branch >>]
+    jobs:
+      - login-to-azure:
+          name: Attaching to the kubernetes cluster
+          context: cicd-orchestrator
+          clusterName: apim-preprod
+      - apply-resources:
+          name: Deploying resources on the cluster
+          context: cicd-orchestrator
+          requires:
+            - Login to K8S 

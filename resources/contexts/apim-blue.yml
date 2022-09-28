@@ -1,0 +1,12 @@
+apiVersion: gravitee.io/v1alpha1
+kind: ManagementContext
+metadata:
+  name: apim-blue-context
+spec:
+  auth:
+    credentials:
+      password: admin
+      username: admin
+  baseUrl: http://apim-blue-apim3-api.apim-blue.svc:83
+  environmentId: DEFAULT
+  organizationId: DEFAULT
