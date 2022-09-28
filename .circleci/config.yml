@@ -69,8 +69,7 @@ workflows:
   pull_requests:
     when:
       or:
-       - equal: [master, << pipeline.git.branch >>]
-       - equal: [ci-hands-on, << pipeline.git.branch >>]
+       - equal: [main, << pipeline.git.branch >>]
     jobs:
       - login-to-azure:
           name: Attaching to the kubernetes cluster
