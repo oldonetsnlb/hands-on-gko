@@ -4,7 +4,7 @@ metadata:
   name: apim-blue
 spec:
   auth:
-    bearerToken: f1e00a2d-4bd4-4ed0-a00a-2d4bd4fed092
+    bearerToken: 01b72c2f-f798-4d76-b72c-2ff7986d769c
   baseUrl: http://apim-blue-apim3-api.apim-blue.svc:83
   environmentId: DEFAULT
   organizationId: DEFAULT
