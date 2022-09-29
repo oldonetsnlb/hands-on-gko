@@ -24,6 +24,7 @@ spec:
   contextRef:
     name: "apim-blue"
     namespace: "gko-hands-on"
+  lifecycle_state: PUBLISHED
   plans: 
     - name: silver
       description: "Silver Plan"
