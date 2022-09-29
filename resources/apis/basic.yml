@@ -29,7 +29,7 @@ spec:
     - name: silver
       description: "Silver Plan"
       security: "API_KEY"
-      validation: "MANUAL"
+      validation: "AUTO"
       status: "PUBLISHED"
       flows:
         - pre:
