@@ -9,6 +9,22 @@ This repository is aimed at adding Custom Resources handled by the Gravitee Kube
 Some basic examples have already been prepared for each supported resources in the `resources` directory.
 To make things simpler, a CircleCI pipeline will handle deploying resources in a dedicated namespace on a demo cluster.
 
+## 💻 APIM environment
+
+### Gateway URL
+
+http://apim-blue-gateway.team-gko.gravitee.xyz
+
+### Console URL
+
+https://apim-blue-console.team-gko.gravitee.xyz
+
+### Portal URL
+
+https://apim-blue-portal.team-gko.gravitee.xyz
+
+⚠️ To use a management context and sync. your API definitions with APIM, a personal access token must be generated 
+for your account and added to the management context resource.
 
 ## 👷‍♀️ Workflow
 
