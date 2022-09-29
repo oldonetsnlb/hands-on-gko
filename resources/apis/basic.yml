@@ -24,6 +24,12 @@ spec:
   contextRef:
     name: "apim-blue"
     namespace: "gko-hands-on"
+  plans: 
+    - name: silver
+      description: "Silver Plan"
+      type: "API_KEY"
+      validation: "manual"
+      status: "PUBLISHED"
   proxy:
     virtual_hosts:
       - path: "/api1"
