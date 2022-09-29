@@ -24,12 +24,23 @@ spec:
   contextRef:
     name: "apim-blue"
     namespace: "gko-hands-on"
+  lifecycle_state: PUBLISHED
   plans: 
     - name: silver
       description: "Silver Plan"
       security: "API_KEY"
       validation: "MANUAL"
       status: "PUBLISHED"
+      flows:
+        - pre:
+            - name: "Transform Headers"
+              description: "Add 'X-Test' request header"
+              policy: transform-headers
+              configuration:
+                addHeaders:
+                  - name: "X-Test"
+                    value: "MyHeaderValue"
+                scope: REQUEST
   proxy:
     virtual_hosts:
       - path: "/api1"
