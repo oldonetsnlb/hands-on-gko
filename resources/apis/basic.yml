@@ -20,7 +20,7 @@ metadata:
 spec:
   name: "GKO Example"
   version: "1.0"
-  description: "Managed by Gravitee Kubernetes Operator"
+  description: "Gravitee Kubernetes Operator Example"
   contextRef:
     name: "apim-blue"
     namespace: "gko-hands-on"
