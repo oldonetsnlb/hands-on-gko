@@ -20,7 +20,7 @@ metadata:
 spec:
   name: "GKO Example"
   version: "1.0"
-  description: "Gravitee Kubernetes Operator Example"
+  description: "Gravitee Kubernetes Operator !!!!!"
   contextRef:
     name: "apim-blue"
     namespace: "gko-hands-on"
@@ -43,7 +43,7 @@ spec:
                 scope: REQUEST
   proxy:
     virtual_hosts:
-      - path: "/api1"
+      - path: "/gko-example"
     groups:
       - endpoints:
           - name: "Default"
