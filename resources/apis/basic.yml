@@ -30,6 +30,16 @@ spec:
       security: "API_KEY"
       validation: "MANUAL"
       status: "PUBLISHED"
+      flows:
+        - pre:
+            - name: "Transform Headers"
+              description: "Add 'X-Test' request header"
+              policy: transform-headers
+              configuration:
+                addHeaders:
+                  - name: "X-Test"
+                    value: "MyHeaderValue"
+                scope: REQUEST
   proxy:
     virtual_hosts:
       - path: "/api1"
