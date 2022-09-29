@@ -16,23 +16,17 @@
 apiVersion: gravitee.io/v1alpha1
 kind: ApiDefinition
 metadata:
-  name: basic-api-example
+  name: issue
 spec:
-  name: "GKO Example"
+  name: "issue"
   version: "1.0"
-  description: "Managed by Gravitee Kubernetes Operator"
+  description: "issue updated"
   contextRef:
     name: "apim-blue"
-    namespace: "gko-hands-on"
-  plans: 
-    - name: silver
-      description: "Silver Plan"
-      security: "API_KEY"
-      validation: "manual"
-      status: "PUBLISHED"
+    namespace: "default"
   proxy:
     virtual_hosts:
-      - path: "/api1"
+      - path: "/issue"
     groups:
       - endpoints:
           - name: "Default"
