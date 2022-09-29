@@ -28,7 +28,7 @@ spec:
     - name: silver
       description: "Silver Plan"
       security: "API_KEY"
-      validation: "manual"
+      validation: "MANUAL"
       status: "PUBLISHED"
   proxy:
     virtual_hosts:
