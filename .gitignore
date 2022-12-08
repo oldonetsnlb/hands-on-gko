@@ -1,0 +1,4 @@
+# editor and IDE paraphernalia
+.idea
+*.iml
+.vscode
