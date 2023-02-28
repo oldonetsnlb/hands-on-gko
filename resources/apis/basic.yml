@@ -58,7 +58,7 @@ spec:
                 scope: REQUEST
   proxy:
     virtual_hosts:
-      - path: "/gko-example"
+      - path: "/gko-example-test"
     groups:
       - endpoints:
           - name: "Default"
